@@ -84,4 +84,19 @@ wordcloud = WordCloud()
 wordcloud.generate(alice)
 plt.axis("off") # 축이 보이지 않게 설정
 plt.imshow(wordcloud) #plt.imshow()로 이미지 출력
+#plt.show()
+
+import numpy as np
+from PIL import Image
+# 사용할 배경이미지를 불러와서 numpy array로 변환
+alice_mask = np.array(Image.open("alice_mask.png"))
+wc = WordCloud(background_color="white", # 배경색 지정
+max_words=30, # 출력할 최대 단어 수
+mask=alice_mask, # 배경으로 사용할 이미지
+contour_width=3, # 테두리 굵기
+contour_color='steelblue') # 테두리 색
+wc.generate_from_frequencies(regex_alice_word_count) # 워드 클라우드 생성
+wc.to_file("alice.png") # 필요한 경우 결과를 이미지 파일로 저장
+plt.axis("off")
+plt.imshow(wc)
 plt.show()
