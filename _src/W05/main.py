@@ -16,6 +16,8 @@ tokens_hamlet = word_tokenize(doc_hamlet)
 #lanc_tokens_hamlet = [lanc_stemmer.stem(i) for i in tokens_hamlet]
 
 #print(lanc_tokens_hamlet[:20])
+### Tokenize
+####렘마타이즈 아니라 포터스태머나 정규표현식 쓰는 경우, 아래 코드 변경한한 뒤, 불용어처리 res_hamlet삼항연산자 데이터 바꿔주면 됨.
 from nltk.stem import WordNetLemmatizer
 lemmatizer = WordNetLemmatizer()
 
@@ -45,7 +47,7 @@ sorted_word_count = sorted(hamlet_word_count, key=hamlet_word_count.get, reverse
 import matplotlib.pyplot as plt
 
 # 정렬된 단어 리스트에 대해 빈도수를 가져와서 새로운 리스트 생성
-n = sorted_word_count[:20][::-1] #빈도수 상위 20개의 단어를 추출하여 역순으로 정렬
+n = sorted_word_count[:20][::-1] # 빈도수 상위 20개의 단어를 추출하여 역순으로 정렬
 w = [hamlet_word_count[key] for key in n]
 
 #수직 막대그래프 bar
